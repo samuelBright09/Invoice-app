@@ -1,0 +1,67 @@
+.invoice-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9fd;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-family: 'Manrope', sans-serif;
+
+  .invoice-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .invoice-id {
+      font-weight: 700;
+      color: #0f0f0f;
+    }
+
+    .invoice-date,
+    .invoice-name {
+      font-size: 0.875rem;
+      color: #7e88c3;
+    }
+  }
+
+  .invoice-amount-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .invoice-amount {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f0f0f;
+    }
+
+    .invoice-status {
+      display: flex;
+      align-items: center;
+      background-color: #f3fcf9;
+      color: #33d69f;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #33d69f;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
+
+      &.paid {
+        background-color: #f3fcf9;
+      }
+    }
+
+    .invoice-arrow {
+      font-size: 1.25rem;
+      color: #7c5dfa;
+    }
+  }
+}
