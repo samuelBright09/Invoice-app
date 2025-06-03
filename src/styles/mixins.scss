@@ -1,0 +1,37 @@
+@use "breakpoints" as bp;
+
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between-column {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@mixin flex-between-center-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+@mixin respond($breakpoint) {
+  $value: map-get(bp.$breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map.";
+  }
+}
+
