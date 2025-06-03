@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { HeaderComponentComponent } from './components/header-component/header-component.component';
-import { InvoiceCardComponent } from './components/invoice-card/invoice-card.component';
+// import { InvoiceCardComponent } from './components/invoice-card/invoice-card.component';
+import { ViewInvoiceComponentComponent } from "./components/view-invoice-component/view-invoice-component.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarComponent, HeaderComponentComponent, InvoiceCardComponent],
+  imports: [RouterOutlet, SidebarComponent, HeaderComponentComponent,  ViewInvoiceComponentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
