@@ -1,0 +1,101 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.sidebar {
+  width: 6.44rem;
+  height: 100vh;
+  background-color: $gunmetal-blue;
+  position: fixed;
+  z-index: 2;
+  @include flex-between-column;
+  border-radius: 0 $medium $medium 0;
+  overflow: hidden;
+}
+
+
+
+.logo-container {
+  width: 100%;
+  height: 6.44rem;
+  background-color: $purple;
+  position: relative;
+  border-radius: 0 $medium $medium 0;
+  overflow: hidden;
+
+    .bottom-layer {
+      background: $purple-light;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius:  $medium 0 
+      
+    }
+  
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    .logo-icon {
+      width: 40px;
+      height: 37.71px;
+    }
+  }
+}
+
+
+.theme-and-profile {
+@include flex-between-center-column;
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 0 5px;
+
+      &:first-child {
+        display: none;
+      }
+    }
+
+
+  }
+
+  hr{
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: $slate-indigo;
+  }
+
+  .profile {
+    padding: 1.5rem 2rem;
+    .p-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
+
