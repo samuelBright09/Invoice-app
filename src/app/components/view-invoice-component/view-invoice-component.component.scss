@@ -1,0 +1,103 @@
+.invoice-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+
+  .invoice-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+
+    .invoice-id {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .invoice-title {
+      color: #777;
+      font-size: 0.875rem;
+      margin: 0.25rem 0 0 0;
+    }
+  }
+
+  .details-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+
+    .detail-column {
+      flex: 1;
+    }
+
+    .bill-to {
+      flex: 2;
+    }
+
+    .detail-label {
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .detail-value {
+      font-weight: bold;
+      margin-bottom: 1.25rem;
+    }
+
+    .address {
+      margin: 0.25rem 0;
+      color: #555;
+    }
+  }
+
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+
+    th {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      color: #777;
+      font-weight: normal;
+      font-size: 0.75rem;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .item-name {
+      font-weight: bold;
+    }
+  }
+
+  .total-container {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #333;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+
+    .total-amount {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .amount {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
