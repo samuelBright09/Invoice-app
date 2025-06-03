@@ -1,6 +1,33 @@
 @use "breakpoints" as bp;
+@use "variables" as *;
 
+@mixin h1-font {
+  font-size: $h1-font;
+  letter-spacing: $h1-letter-spacing;
+  line-height: $h1-line-height;
+  font-weight: $h1-weight;
+}
 
+@mixin h2-font {
+  font-size: $h2-font;
+  letter-spacing: $h2-letter-spacing;
+  line-height: $h2-line-height;
+  font-weight: $h2-weight;
+}
+
+@mixin h3-font {
+  font-size: $h3-font;
+  letter-spacing: $h3-letter-spacing;
+  line-height: $h3-line-height;
+  font-weight: $h3-weight;
+}
+
+@mixin h3-s-font {
+  font-size: $h3-s-font;
+  letter-spacing: $h3-s-letter-spacing;
+  line-height: $h3-s-line-height;
+  font-weight: $h3-s-weight;
+}
 
 @mixin flex-center {
   display: flex;
@@ -21,8 +48,6 @@
   flex-direction: column;
 }
 
-
-
 @mixin respond($breakpoint) {
   $value: map-get(bp.$breakpoints, $breakpoint);
 
@@ -34,4 +59,3 @@
     @warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map.";
   }
 }
-

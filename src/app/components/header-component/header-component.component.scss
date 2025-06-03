@@ -1,0 +1,82 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9fc;
+  font-family: "Inter", sans-serif;
+}
+
+.left-section {
+  h1 {
+   @include h1-font;
+    color: $dark-midnight-blue;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: $cool-slate;
+    @include h3-s-font;
+
+    .highlight {
+      color: #7c5dfa;
+      font-weight: 500;
+    }
+  }
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  // later build components
+  .filter-button {
+    background: none;
+    border: none;
+    color: #0f0f1d;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    .arrow {
+      color: #7c5dfa;
+      font-size: 0.75rem;
+    }
+  }
+
+  .new-invoice-button {
+    background-color: #7c5dfa;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 5px 15px rgba(124, 93, 250, 0.2);
+
+    .plus-icon {
+      background-color: white;
+      color: #7c5dfa;
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+}
