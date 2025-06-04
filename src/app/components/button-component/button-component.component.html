@@ -1,0 +1,10 @@
+<button
+  class="app-button"
+  [ngStyle]="{ 'background-color': bgColor }"
+>
+  <ng-container *ngIf="icon">
+    <img [src]="icon" alt="icon" class="icon" />
+  </ng-container>
+  <span>{{ text }}</span>
+</button>
+
