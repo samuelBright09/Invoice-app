@@ -1,0 +1,18 @@
+<div class="filter-container">
+  <button class="filter-toggle" (click)="toggleDropdown()">
+    Filter by status
+    <span [class.rotated]="dropdownOpen">▾</span>
+  </button>
+
+  <div class="filter-dropdown" *ngIf="dropdownOpen">
+    <label *ngFor="let status of statuses" class="filter-option">
+      <input
+        type="checkbox"
+        [value]="status.value"
+        [(ngModel)]="status.checked"
+      />
+      <span class="custom-checkbox" [class.checked]="status.checked"></span>
+      <span class="status-text">{{ status.label }}</span>
+    </label>
+  </div>
+</div>
