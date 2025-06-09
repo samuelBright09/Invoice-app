@@ -10,6 +10,7 @@
         type="checkbox"
         [value]="status.value"
         [(ngModel)]="status.checked"
+        (change)="onStatusChange()"
       />
       <span class="custom-checkbox" [class.checked]="status.checked"></span>
       <span class="status-text">{{ status.label }}</span>
