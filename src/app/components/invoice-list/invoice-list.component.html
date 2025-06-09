@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="header-container">
+    <div class="left-section">
+      <h1>Invoices</h1>
+      @if (invoices.length === 0) {
+        <p>No invoices</p>
+      } @else if (invoices.length === 1) {
+        <p>There is <span class="highlight">1</span> invoice</p>
+      } @else {
+        <p>There are <span class="highlight">{{ invoices.length }}</span> total invoices</p>
+      }
+    </div>
+    <div class="right-section">
+      <app-filter-button-component (statusChange)="onStatusChange($event)" />
+      <app-button-component text="New Invoice" icon="assets/icon-plus.svg" (click)="openNewInvoiceForm()" />
+    </div>
+  </div>
+
+  <div *ngIf="filteredInvoices.length === 0">
+    <app-empty-invoice></app-empty-invoice>
+  </div>
+  <div *ngIf="filteredInvoices.length > 0" class="invoice-cards">
+    <app-invoice-card *ngFor="let invoice of filteredInvoices" [invoice]="invoice"></app-invoice-card>
+  </div>
+
+  <app-new-invoice-form *ngIf="showNewInvoiceForm" (close)="closeNewInvoiceForm()" (invoiceCreated)="onInvoiceCreated($event)" />
+</div>

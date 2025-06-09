@@ -1,12 +1,8 @@
-<app-sidebar />
-<!-- <app-new-invoice-form /> -->
- <!-- <app-delete-modal-component /> -->
-<div class="main-container">
-  <app-header-component />
-  <div class="invoice-main-container">
-    <!-- <app-invoice-card /> -->
-     <app-view-invoice-component />
-    <!-- <app-empty-invoice /> -->
+<div class="app">
+  <app-sidebar />
+  <div class="main-container">
+    <main class="invoice-main-container">
+      <router-outlet />
+    </main>
   </div>
 </div>
-<router-outlet />

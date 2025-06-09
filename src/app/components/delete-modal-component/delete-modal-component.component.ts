@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-modal-component',
@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './delete-modal-component.component.scss'
 })
 export class DeleteModalComponentComponent {
+  @Input() invoiceId!: string;
+  @Output() confirm = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter<void>();
 
+  onConfirm(): void {
+    this.confirm.emit();
+  }
+
+  onCancel(): void {
+    this.cancel.emit();
+  }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,16 +8,35 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './filter-button-component.component.html',
   styleUrl: './filter-button-component.component.scss',
 })
-export class FilterButtonComponentComponent {
+export class FilterButtonComponentComponent implements OnInit {
+  @Output() statusChange = new EventEmitter<string[]>();
   dropdownOpen = false;
 
   statuses = [
     { label: 'Draft', value: 'draft', checked: false },
-    { label: 'Pending', value: 'pending', checked: true },
+    { label: 'Pending', value: 'pending', checked: false },
     { label: 'Paid', value: 'paid', checked: false },
   ];
 
+  constructor(private eRef: ElementRef) {}
+
+  ngOnInit() {
+    this.onStatusChange();
+  }
+
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  onStatusChange() {
+    const selected = this.statuses.filter(s => s.checked).map(s => s.value);
+    this.statusChange.emit(selected);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (this.dropdownOpen && !this.eRef.nativeElement.contains(event.target)) {
+      this.dropdownOpen = false;
+    }
   }
 }

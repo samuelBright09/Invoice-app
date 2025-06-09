@@ -1,18 +1,31 @@
-
+<button class="back-btn" (click)="goBack()">← Go Back</button>
 <div class="status-container">
-  <div class="status-badge pending">Pending</div>
+  <div class="status-badge pending">{{ invoice?.status }}</div>
   <div class="status-actions">
-    <button class="action-btn edit">Edit</button>
-    <button class="action-btn delete">Delete</button>
-    <button class="action-btn mark-pending">Mark as Pend</button>
+    <button class="action-btn edit" (click)="editInvoice()">Edit</button>
+    <button (click)="onDeleteClick()" class="action-btn delete">Delete</button>
+    <button class="action-btn mark-pending" (click)="markAsPaid()">
+      Mark as Paid
+    </button>
   </div>
 </div>
 
 <div class="invoice-container">
   <div class="invoice-header">
-    <div>
-      <h1 class="invoice-id">XM9141</h1>
-      <p class="invoice-title">Graphic Design</p>
+    <div class="id-and-address">
+      <div class="id">
+
+        <h1 class="invoice-id">#{{ invoice?.invoiceId }}</h1>
+        <p class="invoice-title">{{ invoice?.description }}</p>
+      </div>
+
+      <div class="senders-address">
+        
+        <p class="address">{{ invoice?.senderAddress?.street }}</p>
+        <p class="address">{{ invoice?.senderAddress?.city }}</p>
+        <p class="address">{{ invoice?.senderAddress?.postCode }}</p>
+        <p class="address">{{ invoice?.senderAddress?.country }}</p>
+      </div>
     </div>
   </div>
 
@@ -20,26 +33,30 @@
     <div class="detail-column">
       <div>
         <p class="detail-label">Invoice Date</p>
-        <p class="detail-value">21 Aug 2021</p>
+        <p class="detail-value">
+          {{ invoice?.createdAt | date : "dd MMM yyyy" }}
+        </p>
       </div>
       <div>
         <p class="detail-label">Payment Due</p>
-        <p class="detail-value">20 Sep 2021</p>
+        <p class="detail-value">
+          {{ invoice?.paymentDue | date : "dd MMM yyyy" }}
+        </p>
       </div>
     </div>
 
     <div class="bill-to">
       <p class="detail-label">Bill To</p>
-      <p class="detail-value">Alex Grim</p>
-      <p class="address">84 Church Way</p>
-      <p class="address">Bradford</p>
-      <p class="address">BD1 9PB</p>
-      <p class="address">United Kingdom</p>
+      <p class="detail-value">{{ invoice?.clientName }}</p>
+      <p class="address">{{ invoice?.clientAddress?.street }}</p>
+      <p class="address">{{ invoice?.clientAddress?.city }}</p>
+      <p class="address">{{ invoice?.clientAddress?.postCode }}</p>
+      <p class="address">{{ invoice?.clientAddress?.country }}</p>
     </div>
 
     <div class="detail-column">
       <p class="detail-label">Sent to</p>
-      <p class="detail-value">alexgrim-mail.com</p>
+      <p class="detail-value">{{ invoice?.clientEmail }}</p>
     </div>
   </div>
 
@@ -53,17 +70,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="item-name">Banner Design</td>
-        <td>1</td>
-        <td>£156.00</td>
-        <td>£156.00</td>
-      </tr>
-      <tr>
-        <td class="item-name">Email Design</td>
-        <td>2</td>
-        <td>£200.00</td>
-        <td>£400.00</td>
+      <tr *ngFor="let item of invoice?.items">
+        <td class="item-name">{{ item?.name }}</td>
+        <td>{{ item?.quantity }}</td>
+        <td>{{ item?.price }}</td>
+        <td>{{ item?.total }}</td>
       </tr>
     </tbody>
   </table>
@@ -71,7 +82,22 @@
   <div class="total-container">
     <div class="total-amount">
       <span>Amount Due</span>
-      <span class="amount">£556.00</span>
+      <span class="amount">{{ invoice?.total }}</span>
     </div>
   </div>
+
+  <app-delete-modal-component
+    *ngIf="showDeleteModal"
+    [invoiceId]="invoice?.invoiceId ?? ''"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  ></app-delete-modal-component>
+
+  <app-new-invoice-form
+    *ngIf="showEditForm"
+    [invoice]="invoice"
+    [isEdit]="true"
+    (invoiceCreated)="onInvoiceUpdated($event)"
+    (close)="showEditForm = false"
+  ></app-new-invoice-form>
 </div>
