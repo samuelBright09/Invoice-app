@@ -1,4 +1,5 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .invoice-card {
   display: flex;
@@ -8,29 +9,44 @@
   padding: 1rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.05);
-  font-family: 'Manrope', sans-serif;
 
   .invoice-info {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+
 
     .invoice-id {
-      font-weight: 700;
-      color: #0f0f0f;
+      color: $dark-midnight-blue;
+      @include h3-font;
+      span {
+        color: $cool-slate;
+      }
     }
 
     .invoice-date,
     .invoice-name {
-      font-size: 0.875rem;
-      color: #7e88c3;
+      @include body1-font;
+      color: $lavender-steel;
+    }
+
+    .invoice-name {
+      color: #858BB2;
+    }
+
+    .invoice-date {
+      span {
+        color: $cool-slate;
+      }
     }
   }
 
   .invoice-amount-status {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2.5rem;
+    padding-left: 4.56rem;
 
     .invoice-amount {
       font-size: 1rem;
@@ -41,29 +57,56 @@
     .invoice-status {
       display: flex;
       align-items: center;
-      background-color: #f3fcf9;
-      color: #33d69f;
+      justify-content: center;
+      width: 6.5rem;
       font-weight: 600;
-      padding: 0.4rem 0.8rem;
+      padding: 0.85rem 1rem;
       border-radius: 6px;
       font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       .status-dot {
+        flex-shrink: 0;
         width: 8px;
         height: 8px;
-        background-color: #33d69f;
         border-radius: 50%;
-        margin-right: 6px;
+        margin-right: 8px;
       }
 
       &.paid {
-        background-color: #f3fcf9;
+        background-color: #33d69f1a;
+        color: #33d69f;
+        .status-dot {
+          background-color: #33d69f;
+        }
+      }
+
+      &.pending {
+        background-color: #FF8F001a;
+        color: #FF8F00;
+        .status-dot {
+          background-color: #FF8F00;
+        }
+      }
+
+      &.draft {
+        background-color: #373B531a;
+        color: #373B53;
+        .status-dot {
+          background-color: #373B53;
+        }
       }
     }
 
     .invoice-arrow {
-      font-size: 1.25rem;
-      color: #7c5dfa;
+      padding-left: 1.25rem;
+      span {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $purple;
+      }
     }
   }
 }

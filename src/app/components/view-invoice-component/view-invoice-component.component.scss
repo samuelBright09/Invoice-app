@@ -1,70 +1,13 @@
 @use '../../../styles/variables' as *;
-
-.status-container {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  width: 100%;
-  background-color: #f9f9f9;
-  
-  .status-badge {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    
-    &.pending {
-      background-color: #fff3e0;
-      color: #e65100;
-      border: 1px solid #ffcc80;
-    }
-  }
-  
-  .status-actions {
-    display: flex;
-    gap: 8px;
-    
-    .action-btn {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      
-      &:hover {
-        opacity: 0.9;
-      }
-      
-      &.edit {
-        background-color: #e3f2fd;
-        color: #1976d2;
-      }
-      
-      &.delete {
-        background-color: #ffebee;
-        color: #d32f2f;
-      }
-      
-      &.mark-pending {
-        background-color: #fff8e1;
-        color: #ff8f00;
-      }
-    }
-  }
-}
+@use '../../../styles/mixins' as *;
 
 .back-btn {
   background: none;
   border: none;
-  color: $purple;
-  font-size: 1rem;
-  font-weight: bold;
+  color: $dark-midnight-blue;
+  @include h3-font;
   cursor: pointer;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -74,12 +17,136 @@
     color: $purple-light;
     text-decoration: underline;
   }
+
+  span {
+    margin-right: 1.75rem;
+    color: $purple;
+  }
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: transparent;
+    border-radius: 8px;
+
+    p {
+      color: $cool-slate;
+      @include body1-font;
+    }
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.5rem;
+    font-weight: 600;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .status-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    &.paid {
+      background-color: #33d69f1a;
+      color: #33d69f;
+      .status-dot {
+        background-color: #33d69f;
+      }
+    }
+
+    &.pending {
+      background-color: #FF8F001a;
+      color: #FF8F00;
+      .status-dot {
+        background-color: #FF8F00;
+      }
+    }
+
+    &.draft {
+      background-color: #373B531a;
+      color: #373B53;
+      .status-dot {
+        background-color: #373B53;
+      }
+    }
+  }
+
+  .status-actions {
+    display: flex;
+    gap: 8px;
+
+    .action-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 24px;
+      font-size: 0.8125rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-weight: 700;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &.edit {
+        background-color: #f9fafe;
+        color: $cool-slate;
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+
+      &.delete {
+        background-color: $warning-red;
+        color: #fff;
+
+        &:hover {
+          background-color: $pastal-red;
+        }
+      }
+
+      &.mark-as-paid {
+        background-color: $purple;
+        color: #fff;
+
+        &:hover {
+          background-color: $purple-light;
+        }
+      }
+    }
+  }
 }
 
 .invoice-container {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.05);
   color: #333;
 
   .invoice-header {
@@ -87,27 +154,42 @@
     justify-content: space-between;
     margin-bottom: 2.5rem;
 
-    .invoice-id {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0;
+ .id-and-address{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+    .id {
+      .invoice-id {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+        color: $dark-midnight-blue;
+
+        span {
+          color: $cool-slate;
+        }
+      }
+
+      .invoice-title {
+        color: $lavender-steel;
+        font-size: $body1-font;
+        font-weight: $body1-weight;
+        letter-spacing: $body1-letter-spacing;
+        line-height: $body1-line-height;
+        margin: 0.25rem 0 0 0;
+      }
     }
 
-    .invoice-title {
-      color: #777;
-      font-size: 0.875rem;
-      margin: 0.25rem 0 0 0;
-    }
+    .senders-address {
+      text-align: right;
+      font-size: 0.8125rem;
+      color: $lavender-steel;
 
-    .id-and-address {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2.5rem;
-
-      .senders-address {
-        text-align: right;  
+      p {
+        margin: 0.25rem 0;
       }
     }
   }
@@ -123,66 +205,85 @@
     }
 
     .bill-to {
-      flex: 2;
+      flex: 1.5;
     }
 
     .detail-label {
       font-size: 0.75rem;
-      color: #777;
+      color: $lavender-steel;
       margin-bottom: 0.75rem;
       text-transform: uppercase;
     }
 
     .detail-value {
       font-weight: bold;
+      font-size: $h3-font;
+      letter-spacing: $h3-letter-spacing;
+      line-height: $h3-line-height;
+      color: $dark-midnight-blue;
       margin-bottom: 1.25rem;
     }
 
     .address {
       margin: 0.25rem 0;
-      color: #555;
+      color: $lavender-steel;
+      font-size: $body1-font;
     }
   }
 
   .items-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    margin-bottom: 0;
+    background-color: $light-bg;
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
 
     th {
       text-align: left;
-      padding: 1rem;
-      border-bottom: 1px solid #ddd;
-      color: #777;
+      padding: 1rem 2rem;
+      border-bottom: none;
+      color: $lavender-steel;
       font-weight: normal;
       font-size: 0.75rem;
     }
 
     td {
-      padding: 1rem;
-      border-bottom: 1px solid #ddd;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(132, 137, 172, 0.1);
+      font-size: 0.8125rem;
+
+      &:last-child {
+        font-weight: bold;
+        color: $dark-midnight-blue;
+      }
     }
 
     .item-name {
       font-weight: bold;
+      color: $dark-midnight-blue;
     }
   }
 
   .total-container {
     display: flex;
-    justify-content: flex-end;
-    background-color: #333;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $gunmetal-blue;
     color: white;
     padding: 1.5rem 2rem;
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
 
     .total-amount {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
+      width: 100%;
+   
+
+      p:first-child {
+        @include body1-font
+      }
 
       .amount {
         font-size: 1.5rem;

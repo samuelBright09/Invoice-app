@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { Invoice } from '../../shared/interfaces/invoiceInterface';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-invoice-card',
-  imports: [DatePipe],
+  imports: [DatePipe, CommonModule],
   templateUrl: './invoice-card.component.html',
   styleUrl: './invoice-card.component.scss'
 })

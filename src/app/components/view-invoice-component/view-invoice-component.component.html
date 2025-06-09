@@ -1,10 +1,13 @@
-<button class="back-btn" (click)="goBack()">← Go Back</button>
+<button class="back-btn" (click)="goBack()"><span><</span> Go Back</button>
 <div class="status-container">
-  <div class="status-badge pending">{{ invoice?.status }}</div>
+  <div class="status">
+    <p>Status</p>
+    <div class="status-badge" [ngClass]="invoice?.status?.toLowerCase()"><span class="status-dot"></span>{{ invoice?.status }}</div>
+  </div>
   <div class="status-actions">
     <button class="action-btn edit" (click)="editInvoice()">Edit</button>
     <button (click)="onDeleteClick()" class="action-btn delete">Delete</button>
-    <button class="action-btn mark-pending" (click)="markAsPaid()">
+    <button class="action-btn mark-as-paid" (click)="markAsPaid()">
       Mark as Paid
     </button>
   </div>
@@ -14,13 +17,11 @@
   <div class="invoice-header">
     <div class="id-and-address">
       <div class="id">
-
         <h1 class="invoice-id">#{{ invoice?.invoiceId }}</h1>
         <p class="invoice-title">{{ invoice?.description }}</p>
       </div>
 
       <div class="senders-address">
-        
         <p class="address">{{ invoice?.senderAddress?.street }}</p>
         <p class="address">{{ invoice?.senderAddress?.city }}</p>
         <p class="address">{{ invoice?.senderAddress?.postCode }}</p>
@@ -81,8 +82,8 @@
 
   <div class="total-container">
     <div class="total-amount">
-      <span>Amount Due</span>
-      <span class="amount">{{ invoice?.total }}</span>
+      <p>Amount Due</p>
+      <p class="amount">£ {{ invoice?.total }}</p>
     </div>
   </div>
 

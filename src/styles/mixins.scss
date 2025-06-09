@@ -29,6 +29,15 @@
   font-weight: $h3-s-weight;
 }
 
+@mixin body1-font {
+  font-size: $body1-font;
+  letter-spacing: $body1-letter-spacing;
+  line-height: $body1-line-height;
+  font-weight: $body1-weight;
+}
+
+
+
 @mixin flex-center {
   display: flex;
   justify-content: center;

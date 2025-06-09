@@ -1,21 +1,24 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .app-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: 1rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
+  border-radius: 2.5rem;
+  @include h3-s-font;
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   .icon {
      background-color: white;
+     padding: 0.5rem;
       border-radius: 50%;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 2rem;
+      height: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -23,12 +26,13 @@
     //   font-weight: bold;
   }
 
-  &:hover {
-    opacity: 0.9;
+
+  span {
+    margin-right: 0.5rem;
   }
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  &:hover {
+    opacity: 0.8;
   }
+
 }

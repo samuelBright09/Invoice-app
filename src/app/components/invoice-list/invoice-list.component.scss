@@ -23,12 +23,9 @@
   p {
     margin: 0.5rem 0 0 0;
     color: $cool-slate;
-    @include h3-s-font;
+    @include body1-font;
     
-    .highlight {
-      color: #7c5dfa;
-      font-weight: 500;
-    }
+   
   }
 }
 
@@ -93,7 +90,7 @@
 .invoice-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .invoice-card {
