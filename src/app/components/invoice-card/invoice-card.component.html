@@ -1,18 +1,18 @@
 
   <div class="invoice-card" (click)="viewInvoice()">
     <div class="invoice-info">
-      <span class="invoice-id">#{{ invoice.invoiceId }}</span>
-      <span class="invoice-date">Due {{ invoice.paymentDue | date:'dd MMM yyyy' }}</span>
-      <span class="invoice-name">{{ invoice.clientName }}</span>
+      <p class="invoice-id"><span>#</span>{{ invoice.invoiceId }}</p>
+      <p class="invoice-date"><span>Due</span> {{ invoice.paymentDue | date:'dd MMM yyyy' }}</p>
+      <p class="invoice-name">{{ invoice.clientName }}</p>
     </div>
 
     <div class="invoice-amount-status">
-      <span class="invoice-amount">£{{ invoice.total}}</span>
-      <span class="invoice-status paid">
+      <p class="invoice-amount">£ {{ invoice.total}}</p>
+      <p class="invoice-status" [ngClass]="invoice.status.toLowerCase()">
         <span class="status-dot"></span>
         {{ invoice.status }}
-      </span>
-      <span class="invoice-arrow">&gt;</span>
+      </p>
+      <span class="invoice-arrow">></span>
     </div>
   </div>
 
